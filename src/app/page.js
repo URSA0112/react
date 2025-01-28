@@ -5,21 +5,21 @@ const people = [
   {
     id: 1,
     name: "Alice",
-    age: 25,
+    phonenumber: 25,
     email: "alice@example.com",
-    city: "New York"
+    address: "New York"
   },
   {
     id: 2,
     name: "Bob",
-    age: 30,
+    phonenumber: 30,
     email: "bob@example.com",
-    city: "Los Angeles"
+    address: "Los Angeles"
   },
 ]
 
-
 function Card(props) {
+
   return (
     <div>
       <div className="cards-container">
@@ -27,13 +27,13 @@ function Card(props) {
         <div className="cards" id="card1">
           <div className="left-side">
             <div className="left-up">
-              <div className="left-up-text">{people[0].name}</div>
+              <div className="left-up-text">{props.user.name}</div>
             </div>
             <div className="left-bottom">
-              <p className="left-bottom-info">000-123-456-7890</p>
-              <p className="left-bottom-info">email@yourdomain.com</p>
+              <p className="left-bottom-info">{props.user.phonenumber}</p>
+              <p className="left-bottom-info">{props.user.email}</p>
               <p className="left-bottom-info">
-                Your address goes here 125 Street, USA
+                {props.user.address}
               </p>
             </div>
           </div>
@@ -47,14 +47,16 @@ function Card(props) {
     </div>
   );
 }
-
 export default function Home() {
-
-
   const cards = [];
-  for (let i = 0; i <3; i++) {
-    cards.push(<Card></Card>);
-  
+  for (let i = 0; i < people.length; i++) {
+    cards.push(<Card user = {people[i]}></Card>)
+    console.log(<Card user = {people[i]}></Card>)
+
   }
-  return <div>{cards}</div>;
+  return(
+  <div>
+    {cards}
+  </div>
+  )
 }
