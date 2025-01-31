@@ -1,62 +1,23 @@
-import Image from "next/image";
+"use client";
+import { useState } from "react";
 import styles from "./globals.css";
 
-const people = [
-  {
-    id: 1,
-    name: "Alice",
-    phonenumber: 25,
-    email: "alice@example.com",
-    address: "New York"
-  },
-  {
-    id: 2,
-    name: "Bob",
-    phonenumber: 30,
-    email: "bob@example.com",
-    address: "Los Angeles"
-  },
-]
+export default function Home() {
+const [number, setNumber] = useState(0);
+const add = ()=>{
+setNumber (number + 1) 
 
-function Card(props) {
+}
+const sub = ()=>{
+  if(number > 0 == true)
+  {setNumber (number -1 )}
+}
 
   return (
     <div>
-      <div className="cards-container">
-        {/* card1 */}
-        <div className="cards" id="card1">
-          <div className="left-side">
-            <div className="left-up">
-              <div className="left-up-text">{props.user.name}</div>
-            </div>
-            <div className="left-bottom">
-              <p className="left-bottom-info">{props.user.phonenumber}</p>
-              <p className="left-bottom-info">{props.user.email}</p>
-              <p className="left-bottom-info">
-                {props.user.address}
-              </p>
-            </div>
-          </div>
-          <div className="right-side">
-            <div className="right-up"></div>
-            <div className="rigth-bottom"></div>
-          </div>
-        </div>
-        {/* end of card-container */}
-      </div>
+      <h1>{number}</h1>
+      <button onClick={add}>ADD +</button>
+      <button onClick={sub}>Sub - </button>
     </div>
   );
-}
-export default function Home() {
-  const cards = [];
-  for (let i = 0; i < people.length; i++) {
-    cards.push(<Card user = {people[i]}></Card>)
-    console.log(<Card user = {people[i]}></Card>)
-
-  }
-  return(
-  <div>
-    {cards}
-  </div>
-  )
 }
